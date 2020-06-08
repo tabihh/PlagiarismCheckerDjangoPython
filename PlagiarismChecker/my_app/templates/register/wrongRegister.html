@@ -1,0 +1,12 @@
+{% extends 'register/register.html' %}
+{% block content %}
+
+<h3>Username Already Exists please Try Different USERNAME</h3>
+
+{% endblock content %}
+{% block content2 %}
+<form action="/login/">
+<label>Do you want to login?</label>
+<input class="btn btn-success text-light" type="submit" value="Go To Login Page">
+</form>
+{% endblock content2 %}
