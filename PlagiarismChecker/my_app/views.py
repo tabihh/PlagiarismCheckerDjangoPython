@@ -161,4 +161,4 @@ def addFile(request):
 
         return render(request,'FinalPage/ThankYou.html',OutputStatement) #if they choose no to add files then rendering thank you message
 
-#THANK YOU | A PROJECT BY TABIH,MOIN AND RAYYAN
+#THANK YOU | A PROJECT BY AMEENA,TABIH,MOIN AND RAYYAN
