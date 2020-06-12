@@ -33,27 +33,31 @@
         <div class="col-4">
         </div>
         <div class="col-4">
-          <div class="cardpadding card bg-light" style="margin-top: 100px">
+          <div class="cardpadding card bg-light" style="margin-top: 100px; height:150px " >
+
             <h2 class="text-success">Hello {{username}}</h2>
             <h1 class="text-dark">Plagiarism Checker</h1>
-
+</div>
+          <div class="cardpadding card bg-light" style="margin-top: -5px ; height:300px ; overflow:auto" >
     {% for line in OutputList %}
 
     <h6 class="text-dark">{{ line }}</h6>
     {% endfor %}
-<br>
-  <h5 class="text-dark"> {{FinalOutput}}</h5>
-  <br><br>
-<form class="login form-group" action="/addfile/" method="post">
-  {% csrf_token %}
-    <h5 class="text-dark" >WOULD YOU LIKE TO ADD YOUR FILE TO THE DATABASE</h5>
-    <select class="include" name="include">
-      <option value="YES">YES</option>
-      <option value="NO">NO</option>
-    </select>
-    <input class="center btn btn-success text-light" type="submit" value="Continue">
-    </form>
+
   </div>
+  <div class="cardpadding card bg-light" style="margin-top: -5px ;height:200px">
+    <h5 class="text-dark"> {{FinalOutput}}</h5>
+    <br>
+  <form class="login form-group" action="/addfile/" method="post">
+    {% csrf_token %}
+      <h5 class="text-dark" >WOULD YOU LIKE TO ADD YOUR FILE TO THE DATABASE</h5>
+      <select class="include" name="include">
+        <option value="YES">YES</option>
+        <option value="NO">NO</option>
+      </select>
+      <input class="center btn btn-success text-light" type="submit" value="Continue">
+      </form>
+    </div>
   <div class="col-4">
   </div>
 </div>

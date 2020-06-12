@@ -23,7 +23,7 @@
 
 	</style>
 
-	<title>Login Page</title>
+	<title>Login</title>
 </head>
 <body class="bg-dark" >
 	<nav class="shadow-sm navbar navbar-light bg-light font-weight-bolder">
@@ -44,11 +44,11 @@
 						{% csrf_token %}
 						<p>
 							<label>Username : </label>
-							<input class="form-control" type="text" name="username" placeholder="username">
+							<input class="form-control" type="text" name="username" placeholder="username" required>
 						</p>
 						<p>
 							<label>Password : </label>
-							<input class="form-control" type="password" name="password" placeholder="password">
+							<input class="form-control" type="password" name="password" placeholder="password" required>
 						</p>
 						<input class="btn btn-success text-light" type="submit" name="submit">
 
