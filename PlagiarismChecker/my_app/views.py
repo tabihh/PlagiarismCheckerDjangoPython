@@ -73,6 +73,7 @@ def postUpload(request):
     file=open(f'bufferFolder/{file.name}') #opening the file saved in read mode
 
     bufferlines=[] #to seperate file to list of sentences
+
     for line in file:
         superList.append(line) #saving the list of lines in the global SuperLines to be used later if the user wish to save the file
         sentences=line.split('.') #splting each lines with . delimeter to form sentences
@@ -106,7 +107,7 @@ def postUpload(request):
             bufferwords=line.split(' ')
             if(bufferwords!=['\n']):
                 destBufferlinewords.append(bufferwords)
-        for linewords in bufferlinewords:
+        for linewords in destBufferlinewords:
             if len(linewords)<=3:
                 destBufferlinewords.remove(linewords)
         allCount=0 #for number of lines plagiarized in each file
@@ -126,7 +127,7 @@ def postUpload(request):
                     break #if a line is plagiarized no need to check in other lines of the same file hence stop the itertaion and go to next line
         if(allTotal!=0):
             percentPlag=allCount/allTotal*100 #to find percent plagir from each file
-            OutputList.append(f"The Percentage Plagiarism from {filename} is {percentPlag}") #Append this in the OutputList so that we can print it in HTML
+            OutputList.append(f"The Percentage Plagiarism from {filename} is %.2f"%percentPlag) #Append this in the OutputList so that we can print it in HTML
 
     FinalPlagCount=0 #To check how many lines in Line Check are 1, basically to see how many lines are overall plagiarized
     for each in LineCheck: #to check how many lines have 1
@@ -135,7 +136,7 @@ def postUpload(request):
     FinalOutput="NULL"
     if(LineCount!=0):
         OverallPercentPlag=FinalPlagCount/LineCount*100 #the overall Plagiarism Percentage
-        FinalOutput=(f"The Overall Percentage Plagiarism is {OverallPercentPlag}") #for the HTML print statements
+        FinalOutput=(f"The Overall Percentage Plagiarism is %.2f"%OverallPercentPlag) #for the HTML print statements
     else:
         FinalOutput=f"Your File {superFile} is empty "
     OutputDict={  #its dictonary to send the OutputList to tht HTML to use it in the front end
@@ -151,7 +152,7 @@ def addFile(request):
     'filename':superFile,
     }
     if(request.POST['include']=='YES'): #to check if the user entered yes for the add file in Database
-        filename=superUsername+'s$'+str(superFile) #using the global variable to form a new file name, username +actual filename
+        filename=superUsername+"'s "+str(superFile) #using the global variable to form a new file name, username +actual filename
         file=open(f'fileDatabase/{filename}','a') #creating a new file with the our new filename and using append func
         for line in superList: #using gloabal variable to get each line from the user file
             file.write(line) #writing line to our new files
@@ -160,4 +161,4 @@ def addFile(request):
 
         return render(request,'FinalPage/ThankYou.html',OutputStatement) #if they choose no to add files then rendering thank you message
 
-#THANK YOU | A PROJECT BY TABIH AND RAYYAN
+#THANK YOU | A PROJECT BY TABIH,MOIN AND RAYYAN
